@@ -18,7 +18,7 @@ export class RoomsComponent implements OnInit {
 
   }
   listRoom(){
-    this.apiService.getRooms().subscribe(this.processResult())
+    this.apiService.getAllRooms().subscribe(this.processResult())
 
   }
   processResult(){
