@@ -23,7 +23,7 @@ export class ApiService {
   }
 
   public getAllShowings(): Observable<Showings>{
-    return this.HttpClient.get<Showings>('http://localhost:7777/showing/all')
+    return this.HttpClient.get<Showings>('http://localhost:8080/showing/all')
   }
 }
 
