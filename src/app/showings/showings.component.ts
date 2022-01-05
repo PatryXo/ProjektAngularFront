@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../services/api.service";
+import {Showing} from "../Model/showing";
 
 @Component({
   selector: 'app-showings',
@@ -6,15 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./showings.component.css']
 })
 export class ShowingsComponent implements OnInit {
-  number!: number
-  capacity !: number
 
-  constructor() {
+  showingList: Showing[] = []
+
+  constructor(private apiServie: ApiService) {
   }
 
   ngOnInit(): void {
-   this.number = 1;
-   this.capacity = 120;
+   this.listShowing();
+  }
+  listShowing(){
+    this.apiServie.getAllShowings().subscribe(this.processResult())
   }
 
+  processResult(){
+    //@ts-ignore
+    return data =>{
+      this.showingList = data;
+    }
+  }
 }
