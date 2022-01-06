@@ -1,4 +1,13 @@
 export class Movie {
+
+  private _title: string;
+  private _duration: number;
+
+  constructor(title: string, duration: number) {
+    this._title = title;
+    this._duration = duration;
+  }
+
   get title(): string {
     return this._title;
   }
@@ -14,10 +23,6 @@ export class Movie {
   set duration(value: number) {
     this._duration = value;
   }
-  constructor(title: string, duration: number) {
-    this._title = title;
-    this._duration = duration;
-  }
-  private _title: string;
-  private _duration: number;
+
+
 }

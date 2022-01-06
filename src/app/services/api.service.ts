@@ -15,15 +15,20 @@ export class ApiService {
   }
 
   public getAllRooms(): Observable<Rooms> {
-    return this.HttpClient.get<Rooms>('http://localhost:8080/room/all')
+    return this.HttpClient.get<Rooms>('http://localhost:7777/room/all')
   }
 
   public getAllMovies(): Observable<Movies> {
-    return this.HttpClient.get<Movies>('http://localhost:8080/movie/all')
+    console.log(this.HttpClient.get<Movies>('http://localhost:7777/movie/all'))
+    return this.HttpClient.get<Movies>('http://localhost:7777/movie/all')
   }
 
   public getAllShowings(): Observable<Showings>{
-    return this.HttpClient.get<Showings>('http://localhost:8080/showing/all')
+    return this.HttpClient.get<Showings>('http://localhost:7777/showing/all')
+  }
+
+  public addMovie(movie:Movie): Observable<Movie>{
+    return this.HttpClient.post<Movie>('http://localhost:7777/movie/add',movie)
   }
 }
 
@@ -38,4 +43,6 @@ export interface Movies {
 export interface Showings{
   showingList: Showing[]
 }
+
+
 

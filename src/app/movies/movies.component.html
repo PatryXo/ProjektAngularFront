@@ -1,5 +1,19 @@
-<p>{{movieList[0].title}}  {{movieList[0].duration}}</p>
-<p>{{movieList[1].title}}  {{movieList[1].duration}}</p>
-<p>{{movieList[2].title}}  {{movieList[2].duration}}</p>
-<p>{{movieList[3].title}}  {{movieList[3].duration}}</p>
+<!--<p>{{movieList[0].title}}  {{movieList[0].duration}}</p>-->
+<!--<p>{{movieList[1].title}}  {{movieList[1].duration}}</p>-->
+<!--<p>{{movieList[2].title}}  {{movieList[2].duration}}</p>-->
+<!--<p>{{movieList[3].title}}  {{movieList[3].duration}}</p>-->
+<!--<p >{{movieList}}</p>-->
+
+ <app-add-movie [movieList]="movieList" ></app-add-movie>
+ {{movieList}}
+
+<!--<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" >-->
+
+<!--  Nazwa <input type="text" formControlName="title"/><br>-->
+<!--  Czas trwania filmu <input type="number" formControlName="duration"/><br>-->
+
+<!--  <button type="submit" >Dodaj</button>-->
+
+<!--</form>-->
+
 
