@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService, Rooms} from "../services/api.service";
 import {Room} from "../Model/room";
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {Movie} from "../Model/movie";
 
 @Component({
   selector: 'app-rooms',
@@ -18,9 +19,11 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.listRoom();
-    this.route.queryParams.subscribe(params => {
-      this.name = params['name'];
-    });
+    console.log(this.rooms)
+
+    // this.route.queryParams.subscribe(params => {
+    //   this.name = params['name'];
+    // });
 
   }
 
@@ -32,8 +35,13 @@ export class RoomsComponent implements OnInit {
   processResult() {
     // @ts-ignore
     return data => {
-      this.rooms = data;
+      data.forEach((room:Room) =>{
+        let tmp:Room = new Room(room.number,room.capacity)
+        this.rooms.push(tmp);
+      })
+
     }
+
 
   }
 

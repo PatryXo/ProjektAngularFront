@@ -19,7 +19,6 @@ export class ApiService {
   }
 
   public getAllMovies(): Observable<Movies> {
-    console.log(this.HttpClient.get<Movies>('http://localhost:7777/movie/all'))
     return this.HttpClient.get<Movies>('http://localhost:7777/movie/all')
   }
 
@@ -28,7 +27,7 @@ export class ApiService {
   }
 
   public addMovie(movie:Movie): Observable<Movie>{
-    return this.HttpClient.post<Movie>('http://localhost:7777/movie/add',movie)
+    return this.HttpClient.post<Movie>('http://localhost:7777/movie/add',{title: movie.title, duration: movie.duration})
   }
 }
 

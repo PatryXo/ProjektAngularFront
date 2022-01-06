@@ -3,17 +3,19 @@
 <!--<p>{{movieList[2].title}}  {{movieList[2].duration}}</p>-->
 <!--<p>{{movieList[3].title}}  {{movieList[3].duration}}</p>-->
 <!--<p >{{movieList}}</p>-->
+<br>
 
- <app-add-movie [movieList]="movieList" ></app-add-movie>
- {{movieList}}
 
-<!--<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" >-->
+<div *ngFor="let movie of movieList">
+  <p>{{movie.title}}  {{movie.duration}}</p>
+</div>
+<br><br>
 
-<!--  Nazwa <input type="text" formControlName="title"/><br>-->
-<!--  Czas trwania filmu <input type="number" formControlName="duration"/><br>-->
+<app-add-movie [movieList]="movieList" (movieListBack)="infoBack($event)"></app-add-movie>
 
-<!--  <button type="submit" >Dodaj</button>-->
+<button routerLink="/movies/add" routerLinkActive="active">Dodaj Film</button>
 
-<!--</form>-->
+
+
 
 
