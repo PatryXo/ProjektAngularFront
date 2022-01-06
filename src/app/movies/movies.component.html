@@ -4,16 +4,14 @@
 <!--<p>{{movieList[3].title}}  {{movieList[3].duration}}</p>-->
 <!--<p >{{movieList}}</p>-->
 <br>
-
-
 <div *ngFor="let movie of movieList">
   <p>{{movie.title}}  {{movie.duration}}</p>
 </div>
+
 <br><br>
 
 <app-add-movie [movieList]="movieList" (movieListBack)="infoBack($event)"></app-add-movie>
 
-<button routerLink="/movies/add" routerLinkActive="active">Dodaj Film</button>
 
 
 

@@ -1,16 +1,18 @@
-<br>
+
 <div>
+  <button (click)="showForm()">Dodaj Film</button>
+</div>
+<div *ngIf="status > -1">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+    Nazwa <input type="text" formControlName="title"/><br>
+    Czas trwania filmu <input type="text" formControlName="duration"/><br>
+
+    <button type="submit">Dodaj</button>
+
+  </form>
 </div>
 
-<br>
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-
-  Nazwa <input type="text" formControlName="title"/><br>
-  Czas trwania filmu <input type="text" formControlName="duration"/><br>
-
-  <button type="submit">Dodaj</button>
-
-</form>
 
 
 

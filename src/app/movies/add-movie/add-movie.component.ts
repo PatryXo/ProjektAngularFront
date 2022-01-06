@@ -15,6 +15,7 @@ export class AddMovieComponent implements OnInit {
   formGroup!: FormGroup;
   @Input() movieList!: Movie[]
   @Output() movieListBack:  EventEmitter<Movie> = new EventEmitter()
+  status: number = -1;
 
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef) {
@@ -30,14 +31,19 @@ export class AddMovieComponent implements OnInit {
   onSubmit() {
     let movie: Movie = new Movie(this.formGroup.get('title')?.value,
       +this.formGroup.get('duration')?.value
-    )
+    );
     this.apiService.addMovie(movie).subscribe();
-    this.formGroup.reset()
-    this.movieListBack.emit(movie)
+    this.formGroup.reset();
+    this.movieListBack.emit(movie);
+    this.status = -1;
 
     // window.location.reload()
 
 
+  }
+
+  showForm() {
+    this.status = 1;
   }
 }
 
