@@ -17,6 +17,7 @@ export class MoviesComponent implements OnInit {
   editGroup!: FormGroup;
   title = new FormControl('')
   duration = new FormControl('')
+  selected!: number;
 
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef) {
@@ -44,5 +45,9 @@ export class MoviesComponent implements OnInit {
 
   infoBack(event: Movie) {
     this.movieList.push(event);
+  }
+
+  onSelect(movieId: number): void {
+    this.selected =movieId;
   }
 }

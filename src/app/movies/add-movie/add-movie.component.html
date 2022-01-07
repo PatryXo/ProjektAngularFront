@@ -3,6 +3,7 @@
   <button (click)="showForm()">Dodaj Film</button>
 </div>
 <div *ngIf="status > -1">
+  <br>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
     Nazwa <input type="text" formControlName="title"/><br>

@@ -4,13 +4,15 @@
 <!--<p>{{movieList[3].title}}  {{movieList[3].duration}}</p>-->
 <!--<p >{{movieList}}</p>-->
 <br>
-<div *ngFor="let movie of movieList">
-  <p>{{movie.title}}  {{movie.duration}}</p>
+<div *ngFor="let movie of movieList; index as i" >
+  <p (click)="onSelect(i)">{{movie.title}}  {{movie.duration}}</p>
 </div>
 
 <br><br>
 
 <app-add-movie [movieList]="movieList" (movieListBack)="infoBack($event)"></app-add-movie>
+<app-edit-movie [movieList]="movieList" [selected]="selected"></app-edit-movie>
+<app-delete-movie></app-delete-movie>
 
 
 

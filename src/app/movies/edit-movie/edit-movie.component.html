@@ -1,1 +1,16 @@
-<p>edit-movie works!</p>
+<div>
+  <button (click)="showForm()">Edytuj</button>
+</div>
+<div *ngIf="selected > -1">
+  <h2>Edycja:</h2>
+  <div>
+    <label>nazwa:
+      <input [(ngModel)]="movieList[selected].title" />
+    </label>
+    <label>czas trwania:
+      <input [(ngModel)]="movieList[selected].duration" />
+      <button (click)="save()">Zapisz</button>
+    </label>
+    <button (click)="back()">Wróć</button>
+  </div>
+</div>
