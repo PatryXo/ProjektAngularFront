@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Movie} from "../../Model/movie";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-delete-movie',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteMovieComponent implements OnInit {
 
-  constructor() { }
+  @Input() selected!: number;
+  @Input() movieList!: Movie[];
+  @Output() afterDelete: EventEmitter<Movie[]> = new EventEmitter();
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
   }
 
+  deleteMovie(): void {
+    this.movieList = this.movieList.filter(movie => movie !== this.movieList[this.selected]);
+    this.apiService.deleteMovie(this.selected).subscribe();
+    this.afterDelete.emit(this.movieList);
+    this.selected = -1;
+
+  }
 }

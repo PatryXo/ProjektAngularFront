@@ -33,6 +33,10 @@ export class ApiService {
   public editMovie(movie:Movie, id:number): Observable<Movie>{
     return this.HttpClient.put<Movie>('http://localhost:7777/movie/edit/'+id,{title: movie.title, duration: movie.duration})  //TODO DO POPRAWY
   }
+
+  public deleteMovie(id:number): Observable<Movie>{
+    return this.HttpClient.delete<Movie>('http://localhost:7777/movie/delete/' + id)
+  }
 }
 
 export interface Rooms {

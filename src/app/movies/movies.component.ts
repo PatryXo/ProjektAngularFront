@@ -50,4 +50,8 @@ export class MoviesComponent implements OnInit {
   onSelect(movieId: number): void {
     this.selected =movieId;
   }
+
+  update(event: Movie[]) {
+    this.movieList = event;
+  }
 }
