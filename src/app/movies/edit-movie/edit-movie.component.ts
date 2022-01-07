@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Movie} from "../../Model/movie";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-edit-movie',
@@ -11,7 +12,7 @@ export class EditMovieComponent implements OnInit {
   @Input() movieList!: Movie[]
   @Input() selected!: number;
 
-  constructor() {
+  constructor(private apiService: ApiService) {
   }
 
   ngOnInit(): void {
@@ -22,7 +23,10 @@ export class EditMovieComponent implements OnInit {
   }
 
   save(): void {
+    this.apiService.editMovie(this.movieList[this.selected],this.selected).subscribe();
     this.selected = -1;
+    console.log(this.movieList)
+
 
   }
 
