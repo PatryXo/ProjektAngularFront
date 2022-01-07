@@ -1,0 +1,8 @@
+<div>
+    <br>
+    <app-add-showing (updatedShowingsList)="updateList($event)"></app-add-showing>
+    <hr>
+    <div *ngFor="let showing of showingsList">
+        <app-showing-detalis [showing]="showing"></app-showing-detalis>
+      </div>
+</div>

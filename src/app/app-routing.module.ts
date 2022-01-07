@@ -5,6 +5,7 @@ import {RoomsComponent} from "./rooms/rooms.component";
 import {MoviesComponent} from "./movies/movies.component";
 import {ShowingsComponent} from "./showings/showings.component";
 import {AddMovieComponent} from "./movies/add-movie/add-movie.component";
+import { AddShowingComponent } from './showings/add-showing/add-showing.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'movies', component: MoviesComponent},
   {path: 'movies/add', component: AddMovieComponent},
   {path: 'showings', component: ShowingsComponent},
+  {path: 'showings/add', component: AddShowingComponent, data: {showingsList: 'showingsList'}},
   {path: '', redirectTo: '/rooms', pathMatch: 'full'}
 
 ];

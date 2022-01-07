@@ -12,6 +12,8 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
 import { EditMovieComponent } from './movies/edit-movie/edit-movie.component';
 import { DeleteMovieComponent } from './movies/delete-movie/delete-movie.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AddShowingComponent } from './showings/add-showing/add-showing.component';
+import { ShowingDetalisComponent } from './showings/showing-detalis/showing-detalis.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AddMovieComponent,
     MovieDetailsComponent,
     EditMovieComponent,
-    DeleteMovieComponent
+    DeleteMovieComponent,
+    AddShowingComponent,
+    ShowingDetalisComponent
   ],
   imports: [
     BrowserModule,

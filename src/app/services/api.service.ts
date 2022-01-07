@@ -26,6 +26,10 @@ export class ApiService {
     return this.HttpClient.get<Showings>('http://localhost:7777/showing/all')
   }
 
+  public addShowing(showing: Showing): Observable<Showing> {
+    return this.HttpClient.post<Showing>('http://localhost:7777/showing/add', {movie: {title: showing.movie.title, duration: showing.movie.duration}, room: {number: showing.room.number, capacity: showing.room.capacity}, takenSeats: showing.takenSeats, date: showing.date});
+  }
+
   public addMovie(movie:Movie): Observable<Movie>{
     return this.HttpClient.post<Movie>('http://localhost:7777/movie/add',{title: movie.title, duration: movie.duration})
   }

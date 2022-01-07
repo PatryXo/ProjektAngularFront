@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../services/api.service";
-import {Showing} from "../Model/showing";
+import { Showing } from '../Model/showing';
 
 @Component({
   selector: 'app-showings',
@@ -9,13 +9,14 @@ import {Showing} from "../Model/showing";
 })
 export class ShowingsComponent implements OnInit {
 
-  showingList: Showing[] = []
+  showingsList: Showing[] = []
 
   constructor(private apiServie: ApiService) {
   }
 
   ngOnInit(): void {
    this.listShowing();
+   console.log(this.showingsList);
   }
   listShowing(){
     this.apiServie.getAllShowings().subscribe(this.processResult())
@@ -24,7 +25,13 @@ export class ShowingsComponent implements OnInit {
   processResult(){
     //@ts-ignore
     return data =>{
-      this.showingList = data;
+     data.forEach((showing: Showing) => {
+       this.showingsList.push(showing);
+     });
     }
+  }
+
+  updateList(event: Showing) {
+    this.showingsList.push(event);
   }
 }

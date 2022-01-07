@@ -19,11 +19,10 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.listRoom();
-    console.log(this.rooms)
-
-    // this.route.queryParams.subscribe(params => {
-    //   this.name = params['name'];
-    // });
+    this.route.queryParams.subscribe(params => {
+      this.name = params['name'];
+    });
+    console.log(this.rooms);
 
   }
 
