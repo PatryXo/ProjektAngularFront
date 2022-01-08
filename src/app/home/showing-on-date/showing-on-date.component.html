@@ -1,0 +1,7 @@
+<form [formGroup]="formGroup" (onChange)="onChanges()">
+    Data <input type="date" formControlName="date"/>
+</form>
+
+<div *ngFor="let showing of filteredList">
+    <app-showing-detalis [showing]="showing"></app-showing-detalis>
+</div>

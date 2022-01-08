@@ -14,6 +14,10 @@ import { DeleteMovieComponent } from './movies/delete-movie/delete-movie.compone
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddShowingComponent } from './showings/add-showing/add-showing.component';
 import { ShowingDetalisComponent } from './showings/showing-detalis/showing-detalis.component';
+import { MainPageComponent } from './home/main-page/main-page.component';
+import { CurrentShowingComponent } from './home/current-showing/current-showing.component';
+import { ShowingOnDateComponent } from './home/showing-on-date/showing-on-date.component';
+import { ChartModule } from 'angular2-chartjs';
 
 @NgModule({
   declarations: [
@@ -26,14 +30,18 @@ import { ShowingDetalisComponent } from './showings/showing-detalis/showing-deta
     EditMovieComponent,
     DeleteMovieComponent,
     AddShowingComponent,
-    ShowingDetalisComponent
+    ShowingDetalisComponent,
+    MainPageComponent,
+    CurrentShowingComponent,
+    ShowingOnDateComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

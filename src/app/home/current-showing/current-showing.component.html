@@ -1,0 +1,7 @@
+<div *ngIf="showingList.length==0">
+    <p>Brak aktualnie trwajacych seansow</p>
+</div>
+
+<div *ngFor="let showing of showingList">
+    <app-showing-detalis [showing]="showing"></app-showing-detalis>
+</div>

@@ -6,6 +6,9 @@ import {MoviesComponent} from "./movies/movies.component";
 import {ShowingsComponent} from "./showings/showings.component";
 import {AddMovieComponent} from "./movies/add-movie/add-movie.component";
 import { AddShowingComponent } from './showings/add-showing/add-showing.component';
+import { MainPageComponent } from './home/main-page/main-page.component';
+import { CurrentShowingComponent } from './home/current-showing/current-showing.component';
+import { ShowingOnDateComponent } from './home/showing-on-date/showing-on-date.component';
 
 
 const routes: Routes = [
@@ -14,7 +17,11 @@ const routes: Routes = [
   {path: 'movies/add', component: AddMovieComponent},
   {path: 'showings', component: ShowingsComponent},
   {path: 'showings/add', component: AddShowingComponent, data: {showingsList: 'showingsList'}},
-  {path: '', redirectTo: '/rooms', pathMatch: 'full'}
+  {path: 'current-showing', component: CurrentShowingComponent},
+  {path: 'showing-on-date', component: ShowingOnDateComponent},
+  {path: '', component: MainPageComponent },
+  {path: '**', redirectTo: '/'}
+  // {path: '', redirectTo: '/rooms', pathMatch: 'full'}
 
 ];
 

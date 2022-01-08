@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Room} from "../Model/room";
-import {Movie} from "../Model/movie";
 import {Showing} from "../Model/showing";
+import { Movie } from '../Model/movie';
 
 
 @Injectable({
