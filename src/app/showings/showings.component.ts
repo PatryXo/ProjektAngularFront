@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../services/api.service";
 import { Showing } from '../Model/showing';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-showings',
@@ -9,20 +10,21 @@ import { Showing } from '../Model/showing';
 })
 export class ShowingsComponent implements OnInit {
 
-  showingsList: Showing[] = []
+  showingsList: Showing[] = [];
+  selected!: number;
 
-  constructor(private apiServie: ApiService) {
+  constructor(private apiServie: ApiService, private router: Router) {
   }
 
   ngOnInit(): void {
    this.listShowing();
-   console.log(this.showingsList);
-  }
-  listShowing(){
-    this.apiServie.getAllShowings().subscribe(this.processResult())
   }
 
-  processResult(){
+  listShowing(){
+    this.apiServie.getAllShowings().subscribe(this.processShowings())
+  }
+
+  processShowings(){
     //@ts-ignore
     return data =>{
      data.forEach((showing: Showing) => {
@@ -31,7 +33,16 @@ export class ShowingsComponent implements OnInit {
     }
   }
 
-  updateList(event: Showing) {
+  onSelect(id: number) {
+    this.router.navigateByUrl('/showings/' + id);
+    this.selected = id;
+  }
+
+  addShowing(event: Showing) {
     this.showingsList.push(event);
+  }
+
+  updateSelected(event: number) {
+    this.selected = event;
   }
 }

@@ -6,6 +6,7 @@ import {ApiService} from "../../services/api.service";
 import { Showing } from '../../Model/showing';
 import { Movie } from '../../Model/movie';
 import { Room } from '../../Model/room';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-showing',
@@ -14,8 +15,7 @@ import { Room } from '../../Model/room';
 })
 export class AddShowingComponent implements OnInit {
   
-  @Input() showingsList: Showing[] = [];
-  @Output() updatedShowingsList:  EventEmitter<Showing> = new EventEmitter();
+  @Output() newShowing:  EventEmitter<Showing> = new EventEmitter();
   moviesList: Movie[] = [];
   roomsList: Room[] = [];
   formGroup!: FormGroup;
@@ -23,7 +23,7 @@ export class AddShowingComponent implements OnInit {
   room = new FormControl('');
   date = new FormControl('');
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router) {
 
   }
 
@@ -33,7 +33,6 @@ export class AddShowingComponent implements OnInit {
       room: this.room,
       date: this.date
     });
-
     this.apiService.getAllRooms().subscribe(this.processRooms());
     this.apiService.getAllMovies().subscribe(this.processMovies());
   }
@@ -64,15 +63,13 @@ export class AddShowingComponent implements OnInit {
     let room: Room = this.formGroup.get('room')?.value;
     let takenSeats: number[] = [];
     let date: Date = this.formGroup.get('date')?.value;
-
+    console.log(date);
     let showing = new Showing(movie, room, takenSeats, date);
 
-    console.log(showing)
-    console.log(showing.movie);
     this.apiService.addShowing(showing).subscribe();
-    this.showingsList.push(showing);
-    this.updatedShowingsList.emit(showing);
-    this.formGroup.reset()
+    this.newShowing.emit(showing);
+    this.formGroup.reset();
+    this.router.navigateByUrl('/showings');
+    //this.router.navigate(['/showings']);
   }
-
 }

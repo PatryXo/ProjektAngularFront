@@ -1,8 +1,14 @@
 <div>
     <br>
-    <app-add-showing (updatedShowingsList)="updateList($event)"></app-add-showing>
+    <button>
+      <a [routerLink]="['add']">Dodaj</a>
+    </button>
     <hr>
-    <div *ngFor="let showing of showingsList">
-        <app-showing-detalis [showing]="showing"></app-showing-detalis>
-      </div>
+    <div *ngFor="let showing of showingsList; index as i">
+      <app-showing (click)="onSelect(i)" [showing]="showing"></app-showing>
+    </div>
+    <hr>
+    <!-- <div *ngIf="selected > -1" onchange="selected">
+      <app-edit-showing [showingsList]="showingsList" [selected]="selected" (updatedSelected)="updateSelected($event)"></app-edit-showing>
+    </div> -->
 </div>

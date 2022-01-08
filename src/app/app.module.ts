@@ -18,6 +18,8 @@ import { MainPageComponent } from './home/main-page/main-page.component';
 import { CurrentShowingComponent } from './home/current-showing/current-showing.component';
 import { ShowingOnDateComponent } from './home/showing-on-date/showing-on-date.component';
 import { ChartModule } from 'angular2-chartjs';
+import { EditShowingComponent } from './showings/edit-showing/edit-showing.component';
+import { ShowingComponent } from './showings/showing/showing.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ChartModule } from 'angular2-chartjs';
     ShowingDetalisComponent,
     MainPageComponent,
     CurrentShowingComponent,
-    ShowingOnDateComponent
+    ShowingOnDateComponent,
+    EditShowingComponent,
+    ShowingComponent
   ],
   imports: [
     BrowserModule,
