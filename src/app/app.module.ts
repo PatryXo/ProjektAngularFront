@@ -16,7 +16,6 @@ import { ShowingDetalisComponent } from './showings/showing-detalis/showing-deta
 import { MainPageComponent } from './home/main-page/main-page.component';
 import { CurrentShowingComponent } from './home/current-showing/current-showing.component';
 import { ShowingOnDateComponent } from './home/showing-on-date/showing-on-date.component';
-import { ChartModule } from 'angular2-chartjs';
 import { EditShowingComponent } from './showings/edit-showing/edit-showing.component';
 import { ShowingComponent } from './showings/showing/showing.component';
 import { DeleteShowingComponent } from './showings/delete-showing/delete-showing.component';
@@ -47,8 +46,7 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    ChartModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
