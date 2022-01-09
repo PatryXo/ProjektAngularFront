@@ -1,0 +1,17 @@
+<div>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" >
+    
+        <select formControlName="movie">
+            <option *ngFor="let movie of moviesList" value="{{movie.title}}" [selected]="movie.title === title">{{movie.title}}</option>
+        </select><br>
+    
+        <select formControlName="room">
+            <option *ngFor="let room of roomsList" value="{{room.number}}" [selected]="room.number === roomNumber">Sala {{room.number}}</option>
+        </select><br>
+    
+        <input type="datetime-local" formControlName="date"/><br>
+      
+        <button type="submit">Zapisz zmiany</button>
+        <button (click)="back()">Wróć</button>
+    </form>
+</div>

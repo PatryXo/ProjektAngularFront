@@ -9,6 +9,9 @@ import { AddShowingComponent } from './showings/add-showing/add-showing.componen
 import { MainPageComponent } from './home/main-page/main-page.component';
 import { CurrentShowingComponent } from './home/current-showing/current-showing.component';
 import { ShowingOnDateComponent } from './home/showing-on-date/showing-on-date.component';
+import { ShowingDetalisComponent } from './showings/showing-detalis/showing-detalis.component';
+import { EditShowingComponent } from './showings/edit-showing/edit-showing.component';
+import { DeleteShowingComponent } from './showings/delete-showing/delete-showing.component';
 
 
 const routes: Routes = [
@@ -16,13 +19,14 @@ const routes: Routes = [
   {path: 'movies', component: MoviesComponent},
   {path: 'movies/add', component: AddMovieComponent},
   {path: 'showings', component: ShowingsComponent},
-  {path: 'showings/add', component: AddShowingComponent, data: {showingsList: 'showingsList'}},
+  {path: 'showings/add', component: AddShowingComponent},
+  {path: 'showings/:id', component: ShowingDetalisComponent},
+  {path: 'showings/:id/edit', component: EditShowingComponent},
+  {path: 'showings/:id/delete', component: DeleteShowingComponent},
   {path: 'current-showing', component: CurrentShowingComponent},
   {path: 'showing-on-date', component: ShowingOnDateComponent},
   {path: '', component: MainPageComponent },
   {path: '**', redirectTo: '/'}
-  // {path: '', redirectTo: '/rooms', pathMatch: 'full'}
-
 ];
 
 @NgModule({

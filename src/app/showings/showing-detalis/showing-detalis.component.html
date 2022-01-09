@@ -1,7 +1,15 @@
 <p>
-    {{showing.movie.title}}
-    <br>
-    Sala {{showing.room.number}}
-    <br>
-    {{showing.date}}
+    {{title}} <br>
+    {{duration}} min <br>
+    Sala {{room}} <br>
+    {{date}} <br>
+    <button>
+        <div [routerLink]="['edit']">Edytuj</div>
+    </button>
+    <button>
+        <div [routerLink]="['delete']">Usuń</div>
+    </button>
+    <button>
+        <div [routerLink]="['/showings']">Wróć</div>
+    </button>
 </p>

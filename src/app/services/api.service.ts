@@ -30,6 +30,14 @@ export class ApiService {
     return this.HttpClient.post<Showing>('http://localhost:7777/showing/add', {movie: {title: showing.movie.title, duration: showing.movie.duration}, room: {number: showing.room.number, capacity: showing.room.capacity}, takenSeats: showing.takenSeats, date: showing.date});
   }
 
+  public editShowing(showing: Showing, id: number): Observable<Showing> {
+    return this.HttpClient.put<Showing>('http://localhost:7777/showing/edit/' + id, {movie: {title: showing.movie.title, duration: showing.movie.duration}, room: {number: showing.room.number, capacity: showing.room.capacity}, takenSeats: showing.takenSeats, date: showing.date});
+  }
+
+  public deleteShowing(id:number): Observable<Showing> {
+    return this.HttpClient.delete<Showing>('http://localhost:7777/showing/delete/' + id);
+  }
+
   public addMovie(movie:Movie): Observable<Movie>{
     return this.HttpClient.post<Movie>('http://localhost:7777/movie/add',{title: movie.title, duration: movie.duration})
   }
