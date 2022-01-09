@@ -20,6 +20,8 @@ export class EditShowingComponent implements OnInit {
   moviesList: Movie[] = [];
   roomsList: Room[] = [];
   formGroup!: FormGroup;
+  title!: string;
+  roomNumber!: number;
   movie = new FormControl('');
   room = new FormControl('');
   date = new FormControl('');
@@ -39,11 +41,6 @@ export class EditShowingComponent implements OnInit {
       room: this.room,
       date: this.date
     });
-    this.formGroup.setValue({
-      movie: this.movie,
-      room: this.room,
-      date: this.date
-    });
   }
 
   processShowings(){
@@ -56,16 +53,18 @@ export class EditShowingComponent implements OnInit {
 
   update() {
     this.formGroup.setValue({
-      movie: this.showing.movie,
-      room: this.showing.room,
+      movie: this.showing.movie.title,
+      room: this.showing.room.number,
       date: this.showing.date
     });
+    this.title = this.showing.movie.title;
+    this.roomNumber = this.showing.room.number;
   }
 
   processRooms() {
     // @ts-ignore
     return data => {
-      data.forEach((room:Room) => {
+      data.forEach((room: Room) => {
         let tmp: Room = new Room(room.number, room.capacity);
         this.roomsList.push(tmp);
       });
@@ -84,23 +83,19 @@ export class EditShowingComponent implements OnInit {
   }
 
   onSubmit() {
-    let movie: Movie = this.formGroup.get('movie')?.value;
-    let room: Room = this.formGroup.get('room')?.value;
+    let title: string = this.formGroup.get('movie')?.value;
+    let rNumber: number = parseInt(this.formGroup.get('room')?.value);
     let takenSeats: number[] = [];
     let date: Date = this.formGroup.get('date')?.value;
 
-    console.log(movie);
-    console.log(room);
-    console.log(this.formGroup.get('date')?.value);
+    let movie: Movie[] = this.moviesList.filter(movie => movie.title === title);
+    let room: Room[] = this.roomsList.filter(room => room.number === rNumber);
     if(movie === undefined || room === undefined || date === undefined) {
       console.log("brak");
     } else {
-      let showing = new Showing(movie, room, takenSeats, date);
+      let showing = new Showing(movie[0], room[0], takenSeats, date);
 
-      console.log(showing)
-      console.log(showing.movie);
       this.apiService.editShowing(showing, this.id).subscribe();
-      //this.showingsList.push(showing);
       this.formGroup.reset()
       this.router.navigateByUrl('/showings/' + this.id);
     }

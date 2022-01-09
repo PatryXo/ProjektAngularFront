@@ -4,9 +4,12 @@
     Sala {{room}} <br>
     {{date}} <br>
     <button>
-        <a [routerLink]="['edit']">Edytuj</a>
+        <div [routerLink]="['edit']">Edytuj</div>
     </button>
     <button>
-        <a [routerLink]="['/showings']">Wróć</a>
+        <div [routerLink]="['delete']">Usuń</div>
+    </button>
+    <button>
+        <div [routerLink]="['/showings']">Wróć</div>
     </button>
 </p>
