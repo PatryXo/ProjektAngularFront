@@ -19,6 +19,7 @@ import { ShowingOnDateComponent } from './home/showing-on-date/showing-on-date.c
 import { ChartModule } from 'angular2-chartjs';
 import { EditShowingComponent } from './showings/edit-showing/edit-showing.component';
 import { ShowingComponent } from './showings/showing/showing.component';
+import { DeleteShowingComponent } from './showings/delete-showing/delete-showing.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ShowingComponent } from './showings/showing/showing.component';
     CurrentShowingComponent,
     ShowingOnDateComponent,
     EditShowingComponent,
-    ShowingComponent
+    ShowingComponent,
+    DeleteShowingComponent
   ],
   imports: [
     BrowserModule,
