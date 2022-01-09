@@ -1,21 +1,25 @@
-<!--<p>{{movieList[0].title}}  {{movieList[0].duration}}</p>-->
-<!--<p>{{movieList[1].title}}  {{movieList[1].duration}}</p>-->
-<!--<p>{{movieList[2].title}}  {{movieList[2].duration}}</p>-->
-<!--<p>{{movieList[3].title}}  {{movieList[3].duration}}</p>-->
-<!--<p >{{movieList}}</p>-->
-<br>
-<div *ngFor="let movie of movieList; index as i" >
-  <p (click)="onSelect(i)">{{movie.title}}  {{movie.duration}}</p>
+
+<!--<br>-->
+<!--<div *ngFor="let movie of movieList; index as i" >-->
+<!--  <p (click)="onSelect(i)">{{movie.title}}  {{movie.duration}}</p>-->
+<!--</div>-->
+
+<!--<br><br>-->
+
+<!--<app-add-movie [movieList]="movieList" (movieListBack)="infoBack($event)"></app-add-movie>-->
+<!--<app-edit-movie [movieList]="movieList" [selected]="selected"></app-edit-movie>-->
+<!--<app-delete-movie [movieList]="movieList" [selected]="selected" (afterDelete)="update($event)"></app-delete-movie>-->
+
+
+<div>
+  <br>
+  <button [routerLink]="['add']">Dodaj</button>
+  <hr>
+  <div *ngFor="let movie of movieList; index as i">
+    <app-movie (click)="onSelect(i)" [movie]="movie"></app-movie>
+  </div>
+  <hr>
 </div>
-
-<br><br>
-
-<app-add-movie [movieList]="movieList" (movieListBack)="infoBack($event)"></app-add-movie>
-<app-edit-movie [movieList]="movieList" [selected]="selected"></app-edit-movie>
-<app-delete-movie [movieList]="movieList" [selected]="selected" (afterDelete)="update($event)"></app-delete-movie>
-
-
-
 
 
 

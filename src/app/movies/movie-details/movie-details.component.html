@@ -1,1 +1,10 @@
-<p>movie-details works!</p>
+<div>
+  <p>
+    Tytuł: {{title}}
+    <br>
+    Czas Trwania {{duration}}
+  </p>
+  <button [routerLink]="['edit']">Edytuj</button>
+  <button [routerLink]="['delete']">Usuń</button>
+  <button [routerLink]="['/movies']">Wróć</button>
+</div>

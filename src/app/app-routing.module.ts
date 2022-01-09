@@ -12,12 +12,18 @@ import { ShowingOnDateComponent } from './home/showing-on-date/showing-on-date.c
 import { ShowingDetalisComponent } from './showings/showing-detalis/showing-detalis.component';
 import { EditShowingComponent } from './showings/edit-showing/edit-showing.component';
 import { DeleteShowingComponent } from './showings/delete-showing/delete-showing.component';
+import {EditMovieComponent} from "./movies/edit-movie/edit-movie.component";
+import {DeleteMovieComponent} from "./movies/delete-movie/delete-movie.component";
+import {MovieDetailsComponent} from "./movies/movie-details/movie-details.component";
 
 
 const routes: Routes = [
   {path: 'rooms', component: RoomsComponent},
   {path: 'movies', component: MoviesComponent},
   {path: 'movies/add', component: AddMovieComponent},
+  {path: 'movies/:id', component: MovieDetailsComponent},
+  {path: 'movies/:id/edit', component: EditMovieComponent},
+  {path: 'movies/:id/delete', component: DeleteMovieComponent},
   {path: 'showings', component: ShowingsComponent},
   {path: 'showings/add', component: AddShowingComponent},
   {path: 'showings/:id', component: ShowingDetalisComponent},

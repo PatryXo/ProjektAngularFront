@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Movie} from "../../Model/movie";
 import {ApiService} from "../../services/api.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-delete-movie',
@@ -9,20 +10,20 @@ import {ApiService} from "../../services/api.service";
 })
 export class DeleteMovieComponent implements OnInit {
 
-  @Input() selected!: number;
-  @Input() movieList!: Movie[];
-  @Output() afterDelete: EventEmitter<Movie[]> = new EventEmitter();
+  id!: number;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.id = parseInt(params['id']);
+    });
+    this.deleteMovie();
   }
 
   deleteMovie(): void {
-    this.movieList = this.movieList.filter(movie => movie !== this.movieList[this.selected]);
-    this.apiService.deleteMovie(this.selected).subscribe();
-    this.afterDelete.emit(this.movieList);
-    this.selected = -1;
-
+    this.apiService.deleteMovie(this.id).subscribe();
+    this.router.navigateByUrl('/movies')
   }
 }

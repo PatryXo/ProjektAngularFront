@@ -22,7 +22,7 @@ export class ApiService {
     return this.HttpClient.get<Movies>('http://localhost:7777/movie/all')
   }
 
-  public getAllShowings(): Observable<Showings>{
+  public getAllShowings(): Observable<Showings> {
     return this.HttpClient.get<Showings>('http://localhost:7777/showing/all')
   }
 
@@ -38,15 +38,21 @@ export class ApiService {
     return this.HttpClient.delete<Showing>('http://localhost:7777/showing/delete/' + id);
   }
 
-  public addMovie(movie:Movie): Observable<Movie>{
-    return this.HttpClient.post<Movie>('http://localhost:7777/movie/add',{title: movie.title, duration: movie.duration})
+  public addMovie(movie: Movie): Observable<Movie> {
+    return this.HttpClient.post<Movie>('http://localhost:7777/movie/add', {
+      title: movie.title,
+      duration: movie.duration
+    })
   }
 
-  public editMovie(movie:Movie, id:number): Observable<Movie>{
-    return this.HttpClient.put<Movie>('http://localhost:7777/movie/edit/'+id,{title: movie.title, duration: movie.duration})  //TODO DO POPRAWY
+  public editMovie(movie: Movie, id: number): Observable<Movie> {
+    return this.HttpClient.put<Movie>('http://localhost:7777/movie/edit/' + id, {
+      title: movie.title,
+      duration: movie.duration
+    })
   }
 
-  public deleteMovie(id:number): Observable<Movie>{
+  public deleteMovie(id: number): Observable<Movie> {
     return this.HttpClient.delete<Movie>('http://localhost:7777/movie/delete/' + id)
   }
 }
@@ -59,7 +65,7 @@ export interface Movies {
   movieList: Movie[];
 }
 
-export interface Showings{
+export interface Showings {
   showingList: Showing[]
 }
 

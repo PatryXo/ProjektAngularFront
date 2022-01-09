@@ -20,6 +20,7 @@ import { EditShowingComponent } from './showings/edit-showing/edit-showing.compo
 import { ShowingComponent } from './showings/showing/showing.component';
 import { DeleteShowingComponent } from './showings/delete-showing/delete-showing.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
+import { MovieComponent } from './movies/movie/movie.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     EditShowingComponent,
     ShowingComponent,
     DeleteShowingComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    MovieComponent
   ],
   imports: [
     BrowserModule,

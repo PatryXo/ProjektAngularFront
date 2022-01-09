@@ -3,6 +3,7 @@ import {Movie} from "../Model/movie";
 import {ApiService, Movies} from "../services/api.service";
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {Room} from "../Model/room";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class MoviesComponent implements OnInit {
   selected!: number;
 
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef) {
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder,private router: Router) {
   }
 
   ngOnInit(): void {
@@ -48,8 +49,9 @@ export class MoviesComponent implements OnInit {
   }
 
   onSelect(movieId: number): void {
-    this.selected =movieId;
+    this.router.navigateByUrl('/movies/' + movieId);
   }
+
 
   update(event: Movie[]) {
     this.movieList = event;

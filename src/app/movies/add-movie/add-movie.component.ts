@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
+import {FormGroup, FormControl, FormBuilder, Validator, Validators} from '@angular/forms';
 import {Movie} from "../../Model/movie";
 
 import {ApiService} from "../../services/api.service";
@@ -14,7 +14,7 @@ export class AddMovieComponent implements OnInit {
 
   formGroup!: FormGroup;
   @Input() movieList!: Movie[]
-  @Output() movieListBack:  EventEmitter<Movie> = new EventEmitter()
+  @Output() movieListBack: EventEmitter<Movie> = new EventEmitter()
   status: number = -1;
 
 
@@ -23,12 +23,14 @@ export class AddMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      title: [''],
-      duration: [''],
+      title: ['', {validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]}],
+      duration: ['', {validators: [Validators.required]}],
     })
+
+
   }
 
-  onSubmit() {
+  onSubmit(check: any) {
     let movie: Movie = new Movie(this.formGroup.get('title')?.value,
       +this.formGroup.get('duration')?.value
     );
@@ -38,8 +40,6 @@ export class AddMovieComponent implements OnInit {
     this.status = -1;
 
     // window.location.reload()
-
-
   }
 
   showForm() {
