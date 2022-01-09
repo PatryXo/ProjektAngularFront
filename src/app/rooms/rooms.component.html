@@ -1,4 +1,3 @@
-
-<p>{{rooms[0].number}} {{rooms[0].capacity}}</p>
-<p>{{rooms[1].number}} {{rooms[1].capacity}}</p>
-<p>{{rooms[2].number}} {{rooms[2].capacity}}</p>
+<div *ngFor="let room of rooms">
+    <p>Sala {{room.number}}, ilość miejsc: {{room.capacity}}</p>
+</div>
