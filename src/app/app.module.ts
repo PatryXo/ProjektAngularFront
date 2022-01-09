@@ -20,6 +20,7 @@ import { ChartModule } from 'angular2-chartjs';
 import { EditShowingComponent } from './showings/edit-showing/edit-showing.component';
 import { ShowingComponent } from './showings/showing/showing.component';
 import { DeleteShowingComponent } from './showings/delete-showing/delete-showing.component';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DeleteShowingComponent } from './showings/delete-showing/delete-showing
     ShowingOnDateComponent,
     EditShowingComponent,
     ShowingComponent,
-    DeleteShowingComponent
+    DeleteShowingComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,

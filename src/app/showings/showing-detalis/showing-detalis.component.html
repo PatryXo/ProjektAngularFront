@@ -2,7 +2,7 @@
     {{title}} <br>
     {{duration}} min <br>
     Sala {{room}} <br>
-    {{date}} <br>
+    {{date | dateFormat}} <br>
     <button [routerLink]="['edit']">Edytuj</button>
     <button [routerLink]="['delete']">Usuń</button>
     <button [routerLink]="['/showings']">Wróć</button>
