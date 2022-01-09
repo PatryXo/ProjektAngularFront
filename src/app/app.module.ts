@@ -17,7 +17,6 @@ import { ShowingDetalisComponent } from './showings/showing-detalis/showing-deta
 import { MainPageComponent } from './home/main-page/main-page.component';
 import { CurrentShowingComponent } from './home/current-showing/current-showing.component';
 import { ShowingOnDateComponent } from './home/showing-on-date/showing-on-date.component';
-import { ChartModule } from 'angular2-chartjs';
 
 @NgModule({
   declarations: [
@@ -40,8 +39,7 @@ import { ChartModule } from 'angular2-chartjs';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    ChartModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
