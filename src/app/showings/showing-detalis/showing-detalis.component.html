@@ -3,13 +3,7 @@
     {{duration}} min <br>
     Sala {{room}} <br>
     {{date}} <br>
-    <button>
-        <div [routerLink]="['edit']">Edytuj</div>
-    </button>
-    <button>
-        <div [routerLink]="['delete']">Usuń</div>
-    </button>
-    <button>
-        <div [routerLink]="['/showings']">Wróć</div>
-    </button>
+    <button [routerLink]="['edit']">Edytuj</button>
+    <button [routerLink]="['delete']">Usuń</button>
+    <button [routerLink]="['/showings']">Wróć</button>
 </p>

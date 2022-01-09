@@ -100,9 +100,4 @@ export class EditShowingComponent implements OnInit {
       this.router.navigateByUrl('/showings/' + this.id);
     }
   }
-
-  back(): void {
-    this.router.navigateByUrl('/showings/' + this.id);
-  }
-
 }
