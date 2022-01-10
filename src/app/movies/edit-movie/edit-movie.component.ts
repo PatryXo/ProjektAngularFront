@@ -3,7 +3,7 @@ import {Movie} from "../../Model/movie";
 import {ApiService} from "../../services/api.service";
 import {Showing} from "../../Model/showing";
 import {Room} from "../../Model/room";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -29,8 +29,8 @@ export class EditMovieComponent implements OnInit {
     });
     this.apiService.getAllMovies().subscribe(this.processMovies());
     this.formGroup = this.formBuilder.group({
-      title: '',
-      duration: ''
+      title: ['', {validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]}],
+      duration: ['', {validators: [Validators.required]}],
     });
   }
 
