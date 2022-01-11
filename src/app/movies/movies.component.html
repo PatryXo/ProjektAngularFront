@@ -13,7 +13,7 @@
 
 <div>
   <br>
-  <button [routerLink]="['add']">Dodaj</button>
+  <button mat-raised-button color="accent" [routerLink]="['add']">Dodaj</button>
   <hr>
   <div *ngFor="let movie of movieList; index as i">
     <app-movie (click)="onSelect(i)" [movie]="movie"></app-movie>

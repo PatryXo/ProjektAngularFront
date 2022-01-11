@@ -16,6 +16,7 @@ export class AddMovieComponent implements OnInit {
   @Input() movieList!: Movie[]
   @Output() movieListBack: EventEmitter<Movie> = new EventEmitter()
   status: number = -1;
+  value = 'Clear me';
 
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef) {
