@@ -1,10 +1,26 @@
-<div>
-  <p>
-    Tytuł: {{title | titlecase}}
-    <br>
-    Czas Trwania {{duration}}
-  </p>
-  <button mat-raised-button color="accent" [routerLink]="['edit']">Edytuj</button>
-  <button mat-raised-button color="accent" [routerLink]="['delete']">Usuń</button>
-  <button mat-raised-button color="accent" [routerLink]="['/movies']">Wróć</button>
+<!--<div>-->
+<!--  <p>-->
+<!--    Tytuł: {{title | titlecase}}-->
+<!--    <br>-->
+<!--    Czas Trwania {{duration}}-->
+<!--  </p>-->
+<!--  <button mat-raised-button color="accent" [routerLink]="['edit']">Edytuj</button>-->
+<!--  <button mat-raised-button color="accent" [routerLink]="['delete']">Usuń</button>-->
+<!--  <button mat-raised-button color="accent" [routerLink]="['/movies']">Wróć</button>-->
+<!--</div>-->
+
+
+<div class="singleLayout">
+  <mat-card class="example-card">
+    <mat-card-title>{{title | titlecase}}</mat-card-title>
+    <mat-card-content>
+      <p>
+        Czas trwania: {{duration}} minut <br>
+        <br>
+        <button mat-stroked-button color="primary" [routerLink]="['edit']">Edytuj</button>
+        <button mat-stroked-button color="warn" [routerLink]="['delete']">Usuń</button>
+        <button mat-stroked-button [routerLink]="['/movies']">Wróć</button>
+      </p>
+    </mat-card-content>
+  </mat-card>
 </div>

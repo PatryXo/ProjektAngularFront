@@ -1,6 +1,18 @@
-<p>
-  Tytuł: {{movie.title | titlecase}}
-  <br>
-  Czas trwania: {{movie.duration}}
-  <br>
-</p>
+<!--<p>-->
+<!--  Tytuł: {{movie.title | titlecase}}-->
+<!--  <br>-->
+<!--  Czas trwania: {{movie.duration}}-->
+<!--  <br>-->
+<!--</p>-->
+
+
+<div>
+  <mat-card class="example-card">
+    <mat-card-title>{{movie.title | titlecase}}</mat-card-title>
+    <mat-card-content>
+      <p>
+        Czas trwania : {{movie.duration}} minut
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

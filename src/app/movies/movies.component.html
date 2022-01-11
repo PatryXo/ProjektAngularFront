@@ -1,25 +1,14 @@
-
-<!--<br>-->
-<!--<div *ngFor="let movie of movieList; index as i" >-->
-<!--  <p (click)="onSelect(i)">{{movie.title}}  {{movie.duration}}</p>-->
-<!--</div>-->
-
-<!--<br><br>-->
-
-<!--<app-add-movie [movieList]="movieList" (movieListBack)="infoBack($event)"></app-add-movie>-->
-<!--<app-edit-movie [movieList]="movieList" [selected]="selected"></app-edit-movie>-->
-<!--<app-delete-movie [movieList]="movieList" [selected]="selected" (afterDelete)="update($event)"></app-delete-movie>-->
-
-
 <div>
   <br>
-  <button mat-raised-button color="accent" [routerLink]="['add']">Dodaj</button>
+  <button mat-raised-button color="primary" [routerLink]="['add']">Dodaj</button>
   <hr>
-  <div *ngFor="let movie of movieList; index as i">
+  <div class="layout" *ngFor="let movie of movieList; index as i">
     <app-movie (click)="onSelect(i)" [movie]="movie"></app-movie>
   </div>
-  <hr>
 </div>
+
+
+
 
 
 
