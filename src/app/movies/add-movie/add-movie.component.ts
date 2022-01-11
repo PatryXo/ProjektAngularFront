@@ -3,6 +3,7 @@ import {FormGroup, FormControl, FormBuilder, Validator, Validators} from '@angul
 import {Movie} from "../../Model/movie";
 
 import {ApiService} from "../../services/api.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -17,21 +18,23 @@ export class AddMovieComponent implements OnInit {
   @Output() movieListBack: EventEmitter<Movie> = new EventEmitter()
   status: number = -1;
   value = 'Clear me';
+  title = new FormControl('', {validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]})
+  duration = new FormControl('', {validators: [Validators.required]})
 
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef) {
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef, private router: Router) {
   }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      title: ['', {validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]}],
-      duration: ['', {validators: [Validators.required]}],
+      title: '',
+      duration: '',
     })
 
 
   }
 
-  onSubmit(check: any) {
+  onSubmit() {
     let movie: Movie = new Movie(this.formGroup.get('title')?.value,
       +this.formGroup.get('duration')?.value
     );
@@ -39,8 +42,9 @@ export class AddMovieComponent implements OnInit {
     this.formGroup.reset();
     this.movieListBack.emit(movie);
     this.status = -1;
+    this.router.navigate(['/movies']);
 
-    // window.location.reload()
+
   }
 
   showForm() {
