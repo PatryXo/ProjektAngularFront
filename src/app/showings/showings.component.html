@@ -1,9 +1,8 @@
 <div>
     <br>
-    <button [routerLink]="['add']">Dodaj</button>
+    <button mat-flat-button color="primary" [routerLink]="['add']">Dodaj</button>
     <hr>
-    <div *ngFor="let showing of showingsList; index as i">
+    <div class="layout" *ngFor="let showing of showingsList; index as i">
       <app-showing (click)="onSelect(i)" [showing]="showing"></app-showing>
     </div>
-    <hr>
 </div>

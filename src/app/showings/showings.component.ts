@@ -17,10 +17,6 @@ export class ShowingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.listShowing();
-  }
-
-  listShowing(){
     this.apiServie.getAllShowings().subscribe(this.processShowings())
   }
 

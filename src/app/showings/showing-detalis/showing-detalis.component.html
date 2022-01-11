@@ -1,9 +1,16 @@
-<p>
-    {{title}} <br>
-    {{duration}} min <br>
-    Sala {{room}} <br>
-    {{date | dateFormat}} <br>
-    <button [routerLink]="['edit']">Edytuj</button>
-    <button [routerLink]="['delete']">Usuń</button>
-    <button [routerLink]="['/showings']">Wróć</button>
-</p>
+<div class="singleLayout">
+    <mat-card class="example-card">
+        <mat-card-subtitle>{{showing.date | dateFormat}}</mat-card-subtitle>
+        <mat-card-title>{{showing.movie.title}}</mat-card-title>
+        <mat-card-content>
+            <p>
+                Czar trwania: {{duration}} minut <br>
+                Sala: {{showing.room.number}} <br>
+                <br>
+                <button mat-stroked-button color="primary" [routerLink]="['edit']">Edytuj</button>
+                <button mat-stroked-button color="warn" [routerLink]="['delete']">Usuń</button>
+                <button mat-stroked-button [routerLink]="['/showings']">Wróć</button>
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -11,9 +11,11 @@
     </select><br>
 
     <input type="datetime-local" formControlName="date"/><br>
+
+    <div id="alert" style="display: none;">
+        Uzupelnij dane!
+    </div>
   
     <button type="submit">Dodaj</button>
-    <button>
-        <a [routerLink]="['/showings']">Wróć</a>
-    </button>
+    <button [routerLink]="['/showings']">Wróć</button>
 </form>
