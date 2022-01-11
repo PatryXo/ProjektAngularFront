@@ -1,0 +1,19 @@
+.addShowing {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+} 
+
+.center {
+    text-align: center;
+}
+
+.button {
+    width: 20%;
+}
+
+.flex-item {
+    display: flex;
+    padding: 1%;
+}

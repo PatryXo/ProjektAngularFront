@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ApiService } from "../../services/api.service";
@@ -19,9 +19,9 @@ export class AddShowingComponent implements OnInit {
   moviesList: Movie[] = [];
   roomsList: Room[] = [];
   formGroup!: FormGroup;
-  movie = new FormControl('');
-  room = new FormControl('');
-  date = new FormControl('');
+  movie = new FormControl('', [Validators.required]);
+  room = new FormControl('', [Validators.required]);
+  date = new FormControl('', [Validators.required]);
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router) {
 
@@ -29,9 +29,9 @@ export class AddShowingComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      movie: '',
-      room: '',
-      date: ''
+      movie: this.movie,
+      room: this.room,
+      date: this.date
     });
     this.apiService.getAllRooms().subscribe(this.processRooms());
     this.apiService.getAllMovies().subscribe(this.processMovies());
@@ -75,38 +75,37 @@ export class AddShowingComponent implements OnInit {
   }
 
   onSubmit() {
-    let alert = document.getElementById('alert');
+    console.log(this.formGroup.get('movie')?.value);
+    console.log(this.formGroup.get('room')?.value);
+    console.log(this.formGroup.get('date')?.value);
     
-    if(this.formGroup.get('movie')?.value === '' ||
-       this.formGroup.get('room')?.value === '' ||
-       this.formGroup.get('date')?.value === '') {
-         
-      if(alert != null) {
-        alert.style.display = "";
-      }
-    } else {
-      if(alert != null) {
-        alert.style.visibility = "none";
-      }
-      
-      let movie: Movie = this.formGroup.get('movie')?.value;
-      let room: Room = this.formGroup.get('room')?.value;
+    if(this.formGroup.get('movie')?.value !== '' ||
+       this.formGroup.get('room')?.value !== '' ||
+       this.formGroup.get('date')?.value !== '') {
+
+      let title: string = this.formGroup.get('movie')?.value;
+      let rNumber: number = parseInt(this.formGroup.get('room')?.value);
       let takenSeats: number[] = [];
       let date: Date = this.formGroup.get('date')?.value;
 
+      let movie: Movie[] = this.moviesList.filter(movie => movie.title === title);
+      let room: Room[] = this.roomsList.filter(room => room.number === rNumber);
+      console.log(movie);
+      console.log(room);
+
       //if(this.check(date, room)) {
-        let showing = new Showing(movie, room, takenSeats, date);
+        let showing = new Showing(movie[0], room[0], takenSeats, date);
 
         this.apiService.addShowing(showing).subscribe();
         this.formGroup.reset();
         
         this.router.navigateByUrl('/showings');
-        this.router.navigate(['/showings']);
+        // this.router.navigate(['/showings']);
       //  console.log("git");
       // } else {
       //   console.log("blędne dane");
       // }
-    }
+    } 
   }
 
   check(date: Date, room: Room): boolean {

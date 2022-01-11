@@ -1,11 +1,11 @@
 <div class="singleLayout">
     <mat-card class="example-card">
-        <mat-card-subtitle>{{showing.date | dateFormat}}</mat-card-subtitle>
-        <mat-card-title>{{showing.movie.title}}</mat-card-title>
+        <mat-card-subtitle>{{date | dateFormat}}</mat-card-subtitle>
+        <mat-card-title>{{title}}</mat-card-title>
         <mat-card-content>
             <p>
                 Czar trwania: {{duration}} minut <br>
-                Sala: {{showing.room.number}} <br>
+                Sala: {{room}} <br>
                 <br>
                 <button mat-stroked-button color="primary" [routerLink]="['edit']">Edytuj</button>
                 <button mat-stroked-button color="warn" [routerLink]="['delete']">Usuń</button>

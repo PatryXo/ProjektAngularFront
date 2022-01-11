@@ -1,17 +1,33 @@
 <div>
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" >
-    
-        <select formControlName="movie">
-            <option *ngFor="let movie of moviesList" value="{{movie.title}}" [selected]="movie.title === title">{{movie.title}}</option>
-        </select><br>
-    
-        <select formControlName="room">
-            <option *ngFor="let room of roomsList" value="{{room.number}}" [selected]="room.number === roomNumber">Sala {{room.number}}</option>
-        </select><br>
-    
-        <input type="datetime-local" formControlName="date"/><br>
-      
-        <button type="submit">Zapisz zmiany</button>
-        <button [routerLink]="['/showings']">Wróć</button>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Film</mat-label>
+            <mat-select formControlName="movie" required>
+                <mat-option *ngFor="let movie of moviesList" value="{{movie.title}}">{{movie.title}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="movie.invalid">Wybierz film!</mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Sala</mat-label>
+            <mat-select formControlName="room" required>
+                <mat-option *ngFor="let room of roomsList" value="{{room.number}}">Sala {{room.number}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="room.invalid">Wybierz salę!</mat-error>
+        </mat-form-field>
+        
+        <br>
+
+        <mat-form-field appearance="outline">
+            <input matInput type="datetime-local" placeholder="Choose a date & time" formControlName="date" required>
+            <mat-error *ngIf="date.invalid">Wybierz datę!</mat-error>
+        </mat-form-field>
+
+        <br> 
+        
+        <button mat-stroked-button color="primary" type="submit">Zapisz zmiany</button>
+        <button mat-stroked-button [routerLink]="['/showings/' + id]">Wróć</button>
     </form>
 </div>

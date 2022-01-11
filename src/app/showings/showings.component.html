@@ -1,7 +1,6 @@
-<div>
-    <br>
-    <button mat-flat-button color="primary" [routerLink]="['add']">Dodaj</button>
-    <hr>
+<div class="paddingList">
+    <button class="button" mat-flat-button color="primary" [routerLink]="['add']">Dodaj</button>
+    <hr class="line">
     <div class="layout" *ngFor="let showing of showingsList; index as i">
       <app-showing (click)="onSelect(i)" [showing]="showing"></app-showing>
     </div>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ApiService } from 'src/app/services/api.service';
 
@@ -21,10 +21,10 @@ export class EditShowingComponent implements OnInit {
   roomsList: Room[] = [];
   formGroup!: FormGroup;
   title!: string;
-  roomNumber!: number;
-  movie = new FormControl('');
-  room = new FormControl('');
-  date = new FormControl('');
+  roomNumber!: string;
+  movie = new FormControl('', [Validators.required]);
+  room = new FormControl('', [Validators.required]);
+  date = new FormControl('', [Validators.required]);
   
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -52,13 +52,13 @@ export class EditShowingComponent implements OnInit {
   }
 
   update() {
+    this.title = this.showing.movie.title;
+    this.roomNumber = this.showing.room.number.toString();
     this.formGroup.setValue({
-      movie: this.showing.movie.title,
-      room: this.showing.room.number,
+      movie: this.title,
+      room: this.roomNumber,
       date: this.showing.date
     });
-    this.title = this.showing.movie.title;
-    this.roomNumber = this.showing.room.number;
   }
 
   processRooms() {
@@ -85,7 +85,7 @@ export class EditShowingComponent implements OnInit {
   onSubmit() {
     let title: string = this.formGroup.get('movie')?.value;
     let rNumber: number = parseInt(this.formGroup.get('room')?.value);
-    let takenSeats: number[] = [];
+    let takenSeats: number[] = this.showing.takenSeats;
     let date: Date = this.formGroup.get('date')?.value;
 
     let movie: Movie[] = this.moviesList.filter(movie => movie.title === title);

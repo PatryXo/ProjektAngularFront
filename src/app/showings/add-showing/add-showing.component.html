@@ -1,21 +1,37 @@
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" >
+<div class="addShowing">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="flex-item">
+            <mat-form-field appearance="outline">
+                <mat-label>Film</mat-label>
+                <mat-select formControlName="movie" required>
+                    <mat-option *ngFor="let movie of moviesList" value="{{movie.title}}">{{movie.title}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="movie.invalid">Wybierz film!</mat-error>
+            </mat-form-field>
+        </div>
 
-    <select formControlName="movie">
-        <option value="" selected disabled>Film</option>
-        <option *ngFor="let movie of moviesList" [ngValue]="movie">{{movie.title}}</option>
-    </select><br>
 
-    <select formControlName="room">
-        <option value="" selected disabled>Sala</option>
-        <option *ngFor="let room of roomsList" [ngValue]="room">Sala {{room.number}}</option>
-    </select><br>
+        <div class="flex-item">
+            <mat-form-field appearance="outline">
+                <mat-label>Sala</mat-label>
+                <mat-select formControlName="room" required>
+                    <mat-option *ngFor="let room of roomsList" value="{{room.number}}">Sala {{room.number}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="room.invalid">Wybierz salę!</mat-error>
+            </mat-form-field>
+        </div>
 
-    <input type="datetime-local" formControlName="date"/><br>
-
-    <div id="alert" style="display: none;">
-        Uzupelnij dane!
-    </div>
-  
-    <button type="submit">Dodaj</button>
-    <button [routerLink]="['/showings']">Wróć</button>
-</form>
+        <mat-form-field appearance="outline">
+            <mat-label>Data</mat-label>
+            <input matInput type="datetime-local" placeholder="Choose a date & time" formControlName="date" required>
+            <mat-error *ngIf="date.invalid">Wybierz datę!</mat-error>
+        </mat-form-field>
+        
+        <br>
+        
+        <div class="center" style="padding-top: 2%;">
+            <button class="button" style="margin-right: 10%;" mat-stroked-button color="primary" type="submit">Dodaj</button>
+            <button class="button" mat-stroked-button [routerLink]="['/showings']">Wróć</button>
+        </div>
+    </form>
+</div>
