@@ -21,3 +21,8 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
+.material-icons.md-11 { font-size: 16px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
