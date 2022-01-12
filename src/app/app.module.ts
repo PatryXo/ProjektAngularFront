@@ -67,7 +67,7 @@ import { MaterialExampleModule } from './material.module';
     MaterialExampleModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, AddMovieComponent, MovieDetailsComponent, MovieComponent, MoviesComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
