@@ -18,6 +18,9 @@ export class EditMovieComponent implements OnInit {
   title!: string;
   duration!: number;
   movie!: Movie;
+  titleForm = new FormControl('', {validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]})
+  durationForm = new FormControl('', {validators: [Validators.required]})
+
 
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router) {
@@ -29,8 +32,8 @@ export class EditMovieComponent implements OnInit {
     });
     this.apiService.getAllMovies().subscribe(this.processMovies());
     this.formGroup = this.formBuilder.group({
-      title: ['', {validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]}],
-      duration: ['', {validators: [Validators.required]}],
+      titleForm: ['', {validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]}],
+      durationForm: ['', {validators: [Validators.required]}],
     });
   }
 
@@ -46,14 +49,14 @@ export class EditMovieComponent implements OnInit {
 
   update() {
     this.formGroup.setValue({
-      title: this.title,
-      duration: this.duration
+      titleForm: this.title,
+      durationForm: this.duration
     });
   }
 
   save(): void {
-    let title: string = this.formGroup.get('title')?.value;
-    let duration: number = parseInt(this.formGroup.get('duration')?.value)
+    let title: string = this.formGroup.get('titleForm')?.value;
+    let duration: number = parseInt(this.formGroup.get('durationForm')?.value)
     this.movie.title = title;
     this.movie.duration = duration;
     this.apiService.editMovie(this.movie, this.id).subscribe();

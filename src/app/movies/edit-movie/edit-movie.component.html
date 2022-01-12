@@ -8,13 +8,14 @@
 
   <mat-form-field appearance="outline">
     <mat-label>Nazwa</mat-label>
-    <input matInput formControlName="title"  required/>
-<!--    <mat-error *ngIf="title.invalid">Podaj nazwę o min długości 2</mat-error>-->
+    <input matInput formControlName="titleForm"  required/>
+    <mat-error *ngIf="titleForm.invalid">Podaj nazwę o min długości 2</mat-error>
   </mat-form-field>
   <br>
   <mat-form-field appearance="outline">
     <mat-label>Czas trwania</mat-label>
-    <input matInput formControlName="duration" required/>
+    <input matInput formControlName="durationForm" required/>
+    <mat-error *ngIf="durationForm">Podaj czas trwania</mat-error>
   </mat-form-field>
   <br>
 
