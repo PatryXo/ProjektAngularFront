@@ -1,33 +1,37 @@
-<div>
+<div class="editShowing">
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline">
+
+        <mat-form-field appearance="outline" class="center">
             <mat-label>Film</mat-label>
             <mat-select formControlName="movie" required>
-                <mat-option *ngFor="let movie of moviesList" value="{{movie.title}}">{{movie.title}}</mat-option>
+                <mat-option class="center" *ngFor="let movie of moviesList" value="{{movie.title}}">{{movie.title}}</mat-option>
             </mat-select>
             <mat-error *ngIf="movie.invalid">Wybierz film!</mat-error>
         </mat-form-field>
 
         <br>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="center">
             <mat-label>Sala</mat-label>
             <mat-select formControlName="room" required>
-                <mat-option *ngFor="let room of roomsList" value="{{room.number}}">Sala {{room.number}}</mat-option>
+                <mat-option class="center" *ngFor="let room of roomsList" value="{{room.number}}">Sala {{room.number}}</mat-option>
             </mat-select>
             <mat-error *ngIf="room.invalid">Wybierz salę!</mat-error>
         </mat-form-field>
         
         <br>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="center">
             <input matInput type="datetime-local" placeholder="Choose a date & time" formControlName="date" required>
             <mat-error *ngIf="date.invalid">Wybierz datę!</mat-error>
         </mat-form-field>
 
         <br> 
-        
-        <button mat-stroked-button color="primary" type="submit">Zapisz zmiany</button>
-        <button mat-stroked-button [routerLink]="['/showings/' + id]">Wróć</button>
+        <div class="center" style="padding-top: 2%;">
+            <button mat-stroked-button color="primary" type="submit">Zapisz zmiany</button>
+        </div>
+        <div class="center" style="padding-top: 5%;">
+            <button class="button" mat-stroked-button [routerLink]="['/showings/' + id]">Wróć</button>
+        </div>
     </form>
 </div>

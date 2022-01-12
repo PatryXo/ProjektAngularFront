@@ -1,4 +1,13 @@
 .singleLayout {
     display: flex;
     justify-content: center;
+    padding: 2%;
+}
+
+.center {
+    text-align: center;
+}
+
+.button {
+    width: 25%;
 }

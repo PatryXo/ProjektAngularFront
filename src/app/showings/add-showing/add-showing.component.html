@@ -1,27 +1,27 @@
 <div class="addShowing">
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-        <div class="flex-item">
-            <mat-form-field appearance="outline">
-                <mat-label>Film</mat-label>
-                <mat-select formControlName="movie" required>
-                    <mat-option *ngFor="let movie of moviesList" value="{{movie.title}}">{{movie.title}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="movie.invalid">Wybierz film!</mat-error>
-            </mat-form-field>
-        </div>
 
+        <mat-form-field appearance="outline" class="center">
+            <mat-label>Film</mat-label>
+            <mat-select formControlName="movie" required>
+                <mat-option class="center" *ngFor="let movie of moviesList" value="{{movie.title}}">{{movie.title}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="movie.invalid">Wybierz film!</mat-error>
+        </mat-form-field>
 
-        <div class="flex-item">
-            <mat-form-field appearance="outline">
-                <mat-label>Sala</mat-label>
-                <mat-select formControlName="room" required>
-                    <mat-option *ngFor="let room of roomsList" value="{{room.number}}">Sala {{room.number}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="room.invalid">Wybierz salę!</mat-error>
-            </mat-form-field>
-        </div>
+        <br>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="center">
+            <mat-label>Sala</mat-label>
+            <mat-select formControlName="room" required>
+                <mat-option class="center" *ngFor="let room of roomsList" value="{{room.number}}">Sala {{room.number}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="room.invalid">Wybierz salę!</mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline" class="center">
             <mat-label>Data</mat-label>
             <input matInput type="datetime-local" placeholder="Choose a date & time" formControlName="date" required>
             <mat-error *ngIf="date.invalid">Wybierz datę!</mat-error>
