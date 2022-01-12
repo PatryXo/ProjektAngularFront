@@ -27,7 +27,7 @@ export class AddMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      title: '',
+      title: ['',{validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]}],
       duration: '',
     })
 
