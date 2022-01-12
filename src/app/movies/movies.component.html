@@ -1,7 +1,6 @@
-<div>
-  <br>
-  <button mat-raised-button color="primary" [routerLink]="['add']">Dodaj</button>
-  <hr>
+<div class="paddingList">
+  <button class="button" mat-flat-button color="primary" [routerLink]="['add']">Dodaj</button>
+  <hr class="line">
   <div class="layout" *ngFor="let movie of movieList; index as i">
     <app-movie (click)="onSelect(i)" [movie]="movie"></app-movie>
   </div>

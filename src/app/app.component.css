@@ -1,28 +1,10 @@
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+.bgColor {
   background-color: #333;
+  align-items: center;
 }
 
-li {
-  float: left;
-}
-
-li a {
-  display: block;
+.textColor {
   color: white;
-  text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
+  text-align: center;
 }
-
-li a:hover {
-  background-color: #111;
-}
-
-.material-icons.md-11 { font-size: 16px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }

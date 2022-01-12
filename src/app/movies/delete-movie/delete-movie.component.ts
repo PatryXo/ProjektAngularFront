@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Movie} from "../../Model/movie";
+import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../services/api.service";
 import {ActivatedRoute, Router} from "@angular/router";
+
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-delete-movie',
@@ -12,7 +13,7 @@ export class DeleteMovieComponent implements OnInit {
 
   id!: number;
 
-  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class DeleteMovieComponent implements OnInit {
 
   deleteMovie(): void {
     this.apiService.deleteMovie(this.id).subscribe();
+    this.snackBar.open('Usunięto film!', '', {duration: 3000});
     this.router.navigateByUrl('/movies')
   }
 }

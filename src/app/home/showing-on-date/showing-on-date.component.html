@@ -1,7 +1,18 @@
-<form [formGroup]="formGroup" (onChange)="onChanges()">
-    Data <input type="date" formControlName="date"/>
-</form>
-
-<div *ngFor="let showing of filteredList">
-    <app-showing [showing]="showing"></app-showing>
+<div>
+    <form class="center select" [formGroup]="formGroup" (onChange)="onChanges()">
+        <mat-form-field appearance="outline" class="center">
+            <mat-label>Data</mat-label>
+            <input matInput type="date" placeholder="Choose a date & time" formControlName="date">
+        </mat-form-field>
+    </form>
+    
+    <div class="layout" *ngFor="let showing of filteredList">
+        
+        <app-showing [showing]="showing"></app-showing>
+    </div>
+    <div class="singleLayout" *ngIf="filteredList.length == 0">
+        <mat-card class="center" style="min-width: 25%;">
+            <mat-card-title>Brak seansów w tym dniu</mat-card-title>
+        </mat-card>
+    </div>
 </div>

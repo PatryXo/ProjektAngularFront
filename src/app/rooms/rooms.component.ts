@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService, Rooms} from "../services/api.service";
+import {ApiService} from "../services/api.service";
 import {Room} from "../Model/room";
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {Movie} from "../Model/movie";
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
@@ -22,13 +20,10 @@ export class RoomsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.name = params['name'];
     });
-    console.log(this.rooms);
-
   }
 
   listRoom() {
     this.apiService.getAllRooms().subscribe(this.processResult())
-
   }
 
   processResult() {
@@ -38,12 +33,8 @@ export class RoomsComponent implements OnInit {
         let tmp:Room = new Room(room.number,room.capacity)
         this.rooms.push(tmp);
       })
-
     }
-
-
   }
-
 }
 
 

@@ -4,8 +4,8 @@
         <mat-card-title>{{title}}</mat-card-title>
         <mat-card-content>
             <p>
-                Czar trwania: {{duration}} minut <br>
-                Sala: {{room}} <br>
+                Czar trwania: {{movieDuration}} minut <br>
+                Sala: {{roomNumber}} <br>
                 <br>  
             </p>
             <div>
@@ -15,4 +15,19 @@
             </div>
         </mat-card-content>
     </mat-card>
+</div>
+
+<div class="singleLayout">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="center">
+            <mat-label>Miejsce</mat-label>
+            <mat-select formControlName="ticket" required>
+                <mat-option class="center" *ngFor="let seat of emptySeats" value="{{seat}}">{{seat}}</mat-option> -->
+            </mat-select>
+            <mat-error *ngIf="ticket.invalid">Wybierz miejsce!</mat-error>
+        </mat-form-field>
+        <div class="center">
+            <button mat-stroked-button color="primary" type="submit">Kup bilet</button>
+        </div>
+    </form>
 </div>

@@ -8,6 +8,8 @@ import { Showing } from '../../Model/showing';
 import { Movie } from '../../Model/movie';
 import { Room } from '../../Model/room';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-add-showing',
   templateUrl: './add-showing.component.html',
@@ -23,7 +25,7 @@ export class AddShowingComponent implements OnInit {
   room = new FormControl('', [Validators.required]);
   date = new FormControl('', [Validators.required]);
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
 
   }
 
@@ -97,8 +99,7 @@ export class AddShowingComponent implements OnInit {
         let showing = new Showing(movie[0], room[0], takenSeats, date);
 
         this.apiService.addShowing(showing).subscribe();
-        this.formGroup.reset();
-        
+        this.snackBar.open('Dodano seans!', '', {duration: 3000});
         this.router.navigateByUrl('/showings');
         // this.router.navigate(['/showings']);
       //  console.log("git");

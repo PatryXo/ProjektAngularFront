@@ -1,14 +1,17 @@
 <div class="singleLayout">
-  <mat-card class="example-card">
+  <mat-card class="center" style="min-width: 25%;">
     <mat-card-title>{{title | titlecase}}</mat-card-title>
-    <mat-card-content>
+    <mat-card-content style="margin-top: 3%;">
       <p>
-        Czas trwania: {{duration}} minut <br>
-        <br>
-        <button mat-stroked-button color="primary" [routerLink]="['edit']">Edytuj</button>
-        <button mat-stroked-button color="warn" [routerLink]="['delete']">Usuń</button>
-        <button mat-stroked-button [routerLink]="['/movies']">Wróć</button>
+        Czas trwania: {{duration}} minut
       </p>
+      <div style="padding-top: 2%;">
+        <button class="button" mat-stroked-button color="primary" [routerLink]="['edit']">Edytuj</button>
+        <button class="button" style="margin-right: 5%; margin-left: 5%;" mat-stroked-button color="warn" [routerLink]="['delete']">Usuń</button>
+        <button class="button" mat-stroked-button [routerLink]="['/movies']">Wróć</button>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
+
+<canvas class="chartsStyle center" id="canvas"></canvas>

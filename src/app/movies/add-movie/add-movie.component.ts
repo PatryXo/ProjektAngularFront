@@ -5,6 +5,8 @@ import {Movie} from "../../Model/movie";
 import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
 
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-add-movie',
@@ -22,7 +24,7 @@ export class AddMovieComponent implements OnInit {
   duration = new FormControl('', {validators: [Validators.required]})
 
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef, private router: Router) {
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef, private router: Router, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class AddMovieComponent implements OnInit {
     this.formGroup.reset();
     this.movieListBack.emit(movie);
     this.status = -1;
+    this.snackBar.open('Dodano film!', '', {duration: 3000});
     this.router.navigate(['/movies']);
 
 

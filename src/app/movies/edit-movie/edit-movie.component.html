@@ -1,27 +1,27 @@
-<form [formGroup]="formGroup" (ngSubmit)="save()">
+<div class="editMovie">
+  <form [formGroup]="formGroup" (ngSubmit)="save()">
 
-<!--  Nazwa <input type="text" formControlName="title"  />-->
-<!--  <br>-->
-<!--  Czas trwania filmu <input type="number" formControlName="duration"/><br>-->
-<!--  <br>-->
-<!--  <button mat-raised-button color="accent" type="submit" [disabled]="formGroup.invalid">Aktualizuj </button>-->
+    <mat-form-field appearance="outline" class="center">
+      <mat-label>Nazwa</mat-label>
+      <input matInput formControlName="titleForm"  required/>
+      <mat-error *ngIf="titleForm.invalid">Podaj nazwę o min długości 2</mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Nazwa</mat-label>
-    <input matInput formControlName="titleForm"  required/>
-    <mat-error *ngIf="titleForm.invalid">Podaj nazwę o min długości 2</mat-error>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="outline">
-    <mat-label>Czas trwania</mat-label>
-    <input matInput formControlName="durationForm" required/>
-    <mat-error *ngIf="durationForm">Podaj czas trwania</mat-error>
-  </mat-form-field>
-  <br>
+    <br>
 
+    <mat-form-field appearance="outline" class="center">
+      <mat-label>Czas trwania</mat-label>
+      <input matInput formControlName="durationForm" type="number" required/>
+      <mat-error *ngIf="durationForm">Podaj czas trwania</mat-error>
+    </mat-form-field>
+    
+    <br>
 
-
-  <button mat-stroked-button color="primary" type="submit">Zapisz zmiany</button>
-  <button mat-stroked-button [routerLink]="['/showings/' + id]">Wróć</button>
-
-</form>
+    <div class="center" style="padding-top: 2%;">
+        <button mat-stroked-button color="primary" type="submit">Zapisz zmiany</button>
+    </div>
+    <div class="center" style="padding-top: 5%;">
+        <button class="button" mat-stroked-button [routerLink]="['/movies/' + this.id]">Wróć</button>
+    </div>
+  </form>
+</div>

@@ -1,7 +1,12 @@
-<div *ngIf="showingList.length==0">
-    <p>Brak aktualnie trwajacych seansow</p>
+<div class="singleLayout" *ngIf="showingList.length==0">
+    <mat-card class="center" style="min-width: 25%;">
+        <mat-card-title>Brak aktualnie trwających seansów</mat-card-title>
+        <mat-card-content class="button">
+            <button mat-stroked-button [routerLink]="['/']">Wróć</button>
+        </mat-card-content>
+    </mat-card>
 </div>
 
-<div *ngFor="let showing of showingList">
+<div class="layout item" *ngFor="let showing of showingList">
     <app-showing [showing]="showing"></app-showing>
 </div>

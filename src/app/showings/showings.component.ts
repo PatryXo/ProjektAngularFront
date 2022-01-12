@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from "../services/api.service";
+import { ApiService } from '../services/api.service';
 import { Showing } from '../Model/showing';
 import { Router } from '@angular/router';
 
@@ -13,11 +13,11 @@ export class ShowingsComponent implements OnInit {
   showingsList: Showing[] = [];
   selected!: number;
 
-  constructor(private apiServie: ApiService, private router: Router) {
+  constructor(private apiService: ApiService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.apiServie.getAllShowings().subscribe(this.processShowings())
+    this.apiService.getAllShowings().subscribe(this.processShowings())
   }
 
   processShowings(){

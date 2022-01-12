@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Movie} from "../../Model/movie";
 import {ApiService} from "../../services/api.service";
-import {Showing} from "../../Model/showing";
-import {Room} from "../../Model/room";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-movie',
@@ -23,7 +23,7 @@ export class EditMovieComponent implements OnInit {
 
 
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -60,6 +60,7 @@ export class EditMovieComponent implements OnInit {
     this.movie.title = title;
     this.movie.duration = duration;
     this.apiService.editMovie(this.movie, this.id).subscribe();
+    this.snackBar.open('Edytowano film!', '', {duration: 3000});
     this.router.navigateByUrl('/movies/' + this.id);
 
   }

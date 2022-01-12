@@ -1,23 +1,24 @@
-
-<div>
-  <br>
+<div class="addMovie">
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="center">
       <mat-label>Nazwa</mat-label>
       <input matInput formControlName="title"  required/>
       <mat-error *ngIf="title.invalid">Podaj nazwę o min długości 2</mat-error>
     </mat-form-field>
+
     <br>
-    <mat-form-field appearance="outline">
+
+    <mat-form-field appearance="outline" class="center">
       <mat-label>Czas trwania filmu</mat-label>
-      <input matInput formControlName="duration"  required />
+      <input matInput formControlName="duration" type="number" required />
       <mat-error *ngIf="duration.invalid">Podaj czas trwania</mat-error>
     </mat-form-field>
-    <br>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="formGroup.invalid">Dodaj </button>
-
+    <div class="center" style="padding-top: 2%;">
+      <button class="button" style="margin-right: 10%;" mat-stroked-button color="primary" type="submit">Dodaj</button>
+      <button class="button" mat-stroked-button [routerLink]="['/movies']">Wróć</button>
+  </div>
   </form>
 </div>
 

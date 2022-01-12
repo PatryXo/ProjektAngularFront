@@ -1,4 +1,19 @@
 .singleLayout {
   display: flex;
   justify-content: center;
+  padding: 2%;
+}
+
+.center {
+  text-align: center;
+}
+
+.button {
+  width: 25%;
+}
+
+.chartsStyle {
+  width: 50%;
+  height: 30%;
+  margin: 0 auto;
 }

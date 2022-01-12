@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ApiService } from 'src/app/services/api.service';
@@ -7,6 +7,8 @@ import { Movie } from 'src/app/Model/movie';
 import { Room } from 'src/app/Model/room';
 import { Showing } from 'src/app/Model/showing';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-showing',
@@ -26,7 +28,7 @@ export class EditShowingComponent implements OnInit {
   room = new FormControl('', [Validators.required]);
   date = new FormControl('', [Validators.required]);
   
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     
@@ -96,7 +98,7 @@ export class EditShowingComponent implements OnInit {
       let showing = new Showing(movie[0], room[0], takenSeats, date);
 
       this.apiService.editShowing(showing, this.id).subscribe();
-      this.formGroup.reset()
+      this.snackBar.open('Edytowano seans!', '', {duration: 3000});
       this.router.navigateByUrl('/showings/' + this.id);
     }
   }

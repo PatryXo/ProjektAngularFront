@@ -1,14 +1,11 @@
-<div>
-  <ul>
+<nav mat-tab-nav-bar class="bgColor" color="warn">
+  <a class="textColor" mat-tab-link routerLink="" routerLinkActive="active">
+    <mat-icon class="material-icons md-12">home</mat-icon>
+    Strona główna
+  </a>
+  <a class="textColor" mat-tab-link routerLink="/showings" routerLinkActive="active">Seanse</a>
+  <a class="textColor" mat-tab-link routerLink="/rooms" routerLinkActive="active" >Sale</a>
+  <a class="textColor" mat-tab-link routerLink="/movies" routerLinkActive="active">Filmy</a>
+</nav> 
 
-    <li></li>
-    <li ><a routerLink="" routerLinkActive="active"> <mat-icon class="material-icons md-11">home</mat-icon> Strona główna</a></li>
-    <li><a routerLink="/showings" routerLinkActive="active">Seanse</a></li>
-    <li><a routerLink="/rooms" routerLinkActive="active" >Sale</a></li>
-    <li><a routerLink="/movies" routerLinkActive="active">Filmy</a></li>
-  </ul>
-  <router-outlet></router-outlet>
-</div>
-
-
-
+<router-outlet></router-outlet>
