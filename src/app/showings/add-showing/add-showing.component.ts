@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-showing.component.css']
 })
 export class AddShowingComponent implements OnInit {
-  
+
   showingsList: Showing[] = [];
   moviesList: Movie[] = [];
   roomsList: Room[] = [];
@@ -38,7 +38,7 @@ export class AddShowingComponent implements OnInit {
     this.apiService.getAllRooms().subscribe(this.processRooms());
     this.apiService.getAllMovies().subscribe(this.processMovies());
     this.apiService.getAllShowings().subscribe(this.processShowings())
-    
+
     this.formGroup.setValue({
       movie: '',
       room: '',
@@ -46,19 +46,19 @@ export class AddShowingComponent implements OnInit {
     });
   }
 
-  processShowings(){
+  processShowings() {
     //@ts-ignore
-    return data =>{
-     data.forEach((showing: Showing) => {
-       this.showingsList.push(showing);
-     });
+    return data => {
+      data.forEach((showing: Showing) => {
+        this.showingsList.push(showing);
+      });
     }
   }
 
   processRooms() {
     // @ts-ignore
     return data => {
-      data.forEach((room:Room) => {
+      data.forEach((room: Room) => {
         let tmp: Room = new Room(room.number, room.capacity);
         this.roomsList.push(tmp);
       });
@@ -68,7 +68,7 @@ export class AddShowingComponent implements OnInit {
   processMovies() {
     // @ts-ignore
     return data => {
-      data.forEach((movie:Movie) => {
+      data.forEach((movie: Movie) => {
         let tmp: Movie = new Movie(movie.title, movie.duration);
         this.moviesList.push(tmp);
       });
@@ -77,13 +77,10 @@ export class AddShowingComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formGroup.get('movie')?.value);
-    console.log(this.formGroup.get('room')?.value);
-    console.log(this.formGroup.get('date')?.value);
-    
-    if(this.formGroup.get('movie')?.value !== '' ||
-       this.formGroup.get('room')?.value !== '' ||
-       this.formGroup.get('date')?.value !== '') {
+
+    if (this.formGroup.get('movie')?.value !== '' ||
+      this.formGroup.get('room')?.value !== '' ||
+      this.formGroup.get('date')?.value !== '') {
 
       let title: string = this.formGroup.get('movie')?.value;
       let rNumber: number = parseInt(this.formGroup.get('room')?.value);
@@ -92,56 +89,33 @@ export class AddShowingComponent implements OnInit {
 
       let movie: Movie[] = this.moviesList.filter(movie => movie.title === title);
       let room: Room[] = this.roomsList.filter(room => room.number === rNumber);
-      console.log(movie);
-      console.log(room);
 
-      //if(this.check(date, room)) {
-        let showing = new Showing(movie[0], room[0], takenSeats, date);
 
-        this.apiService.addShowing(showing).subscribe();
-        this.snackBar.open('Dodano seans!', '', {duration: 3000});
-        this.router.navigateByUrl('/showings');
-        // this.router.navigate(['/showings']);
-      //  console.log("git");
-      // } else {
-      //   console.log("blędne dane");
-      // }
-    } 
-  }
+      let formDate = new Date(date);
+      let currentDate = new Date()
+      
+      if (formDate.getTime() + movie[0].duration * 60000 < currentDate.getTime()) {
+        this.snackBar.open('Data juz minela i nie mozna dodac seansu', '', { duration: 3000 })
+      }
+      else {
+        let tmp = this.showingsList
+        .filter(e => e.room.number === room[0].number 
+          && (formDate.getTime() >= new Date(e.date).getTime() && formDate.getTime() <= new Date(e.date).getTime() + e.movie.duration * 60000 
+          || formDate.getTime() + movie[0].duration * 60000 >= new Date(e.date).getTime() && formDate.getTime() + movie[0].duration * 60000 <= new Date(e.date).getTime() + e.movie.duration * 60000
+          || new Date(e.date).getTime() >= formDate.getTime() && new Date(e.date).getTime() <= formDate.getTime() + movie[0].duration * 60000 
+          || new Date(e.date).getTime() + e.movie.duration * 60000 >= formDate.getTime() && new Date(e.date).getTime() + e.movie.duration * 60000 <= formDate.getTime() + movie[0].duration * 60000))
+        
+        if (tmp.length) {
+          this.snackBar.open('W trakcie podanej daty, sala jest zajeta', '', { duration: 3000 })
+        }
+        else {
+          let showing = new Showing(movie[0], room[0], takenSeats, date);
 
-  check(date: Date, room: Room): boolean {
-    let now: Date = new Date();
-    let nowSplited = now.toString().split(" ");
-    let nowTime = nowSplited[4].split(":");
-    let nowDate = (now.getFullYear().toString() + ":" + (now.getMonth() + 1).toString() + ":" + now.getDate().toString()).split(":");
-
-    let tmp = date.toString().split("T");
-    let newShowingTime = tmp[1].toString().split(":");
-    let newShowingDate = tmp[0].toString().split("-");
-
-    newShowingDate.forEach(element => { parseInt(element)})
-
-    console.log(nowDate);
-    console.log(newShowingDate);
-
-    console.log("rok");
-    if(newShowingDate[0] >= nowDate[0]) {
-      console.log("miesiac");
-      if(newShowingDate[1] >= nowDate[1]) {
-        console.log("dzien");
-        if(newShowingDate[2] >= nowDate[2]) {
-          console.log("godzina");
-          if(newShowingTime[0] >= nowTime[0]) {
-            console.log("minuty");
-            if(newShowingTime[1] >= nowTime[1]) {
-              // this.showingsList.forEach(showing => {
-              //   let 
-              // })
-              return true;
-            } else return false;
-          } else return false;
-        } else return false;
-      } else return false;
-    } else return false;
+          this.apiService.addShowing(showing).subscribe();
+          this.snackBar.open('Dodano seans!', '', { duration: 3000 });
+          this.router.navigateByUrl('/showings');
+        }
+      }
+    }
   }
 }

@@ -13,6 +13,9 @@
     <div class="singleLayout" *ngIf="filteredList.length == 0">
         <mat-card class="center" style="min-width: 25%;">
             <mat-card-title>Brak seansów w tym dniu</mat-card-title>
+            <mat-card-content class="button">
+                <button mat-stroked-button [routerLink]="['/']">Wróć</button>
+            </mat-card-content>
         </mat-card>
     </div>
 </div>
