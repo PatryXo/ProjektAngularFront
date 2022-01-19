@@ -27,6 +27,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { MaterialExampleModule } from './material.module';
+import { ShowingListDirective } from './directive/showing-list.directive';
 
 
 
@@ -50,6 +51,7 @@ import { MaterialExampleModule } from './material.module';
     DeleteShowingComponent,
     DateFormatPipe,
     MovieComponent,
+    ShowingListDirective,
 
   ],
   imports: [
