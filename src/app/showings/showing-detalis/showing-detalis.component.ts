@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Movie } from 'src/app/Model/movie';
 import { Room } from 'src/app/Model/room';
@@ -29,7 +29,7 @@ export class ShowingDetalisComponent implements OnInit {
   formGroup!: FormGroup;
   ticket = new FormControl('', [Validators.required]);
   
-  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private snackBar: MatSnackBar) {
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private snackBar: MatSnackBar, private router: Router) {
 
   }
 
@@ -42,6 +42,9 @@ export class ShowingDetalisComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       ticket: this.ticket
     });    
+    this.formGroup.setValue({
+      ticket: ''
+    })
   }
   
   processShowings(){
@@ -81,6 +84,10 @@ export class ShowingDetalisComponent implements OnInit {
       this.apiService.editShowing(showing, this.id).subscribe();
       this.snackBar.open('Kupiono bilet!', '', {duration: 3000});
       this.filterSeats();
+      this.router.navigateByUrl('/showings/' + this.id);
     }
+    this.formGroup.setValue({
+      ticket: ''
+    });
   }
 }
