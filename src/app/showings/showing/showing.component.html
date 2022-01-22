@@ -1,5 +1,5 @@
 <div>
-    <mat-card>
+    <mat-card  appShowingList takenSeats={{showing.takenSeats}} roomCapacity={{showing.room.capacity}}>
         <mat-card-subtitle>{{showing.date | dateFormat}}</mat-card-subtitle>
         <mat-card-title>{{showing.movie.title}}</mat-card-title>
         <mat-card-content>

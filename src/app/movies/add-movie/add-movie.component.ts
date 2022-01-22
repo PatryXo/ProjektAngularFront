@@ -46,8 +46,6 @@ export class AddMovieComponent implements OnInit {
     this.status = -1;
     this.snackBar.open('Dodano film!', '', {duration: 3000});
     this.router.navigate(['/movies']);
-
-
   }
 
   showForm() {
