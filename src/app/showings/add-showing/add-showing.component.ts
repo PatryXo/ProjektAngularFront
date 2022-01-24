@@ -78,8 +78,8 @@ export class AddShowingComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.formGroup.get('movie')?.value !== '' ||
-      this.formGroup.get('room')?.value !== '' ||
+    if (this.formGroup.get('movie')?.value !== '' &&
+      this.formGroup.get('room')?.value !== '' &&
       this.formGroup.get('date')?.value !== '') {
 
       let title: string = this.formGroup.get('movie')?.value;

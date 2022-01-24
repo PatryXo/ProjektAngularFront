@@ -20,8 +20,8 @@ export class AddMovieComponent implements OnInit {
   @Output() movieListBack: EventEmitter<Movie> = new EventEmitter()
   status: number = -1;
   value = 'Clear me';
-  title = new FormControl('', {validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]})
-  duration = new FormControl('', {validators: [Validators.required]})
+  title = new FormControl('', [Validators.required]);
+  duration = new FormControl('', [Validators.required]);
 
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private change: ChangeDetectorRef, private router: Router, private snackBar: MatSnackBar) {
@@ -29,23 +29,34 @@ export class AddMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      title: ['',{validators: [Validators.required, Validators.minLength(2), Validators.maxLength(30)]}],
+      title: this.title,
+      duration: this.duration,
+    });
+
+    this.formGroup.setValue({
+      title: '',
       duration: '',
-    })
+    });
 
 
   }
 
   onSubmit() {
-    let movie: Movie = new Movie(this.formGroup.get('title')?.value,
-      +this.formGroup.get('duration')?.value
-    );
-    this.apiService.addMovie(movie).subscribe();
-    this.formGroup.reset();
-    this.movieListBack.emit(movie);
-    this.status = -1;
-    this.snackBar.open('Dodano film!', '', {duration: 3000});
-    this.router.navigate(['/movies']);
+    if (this.formGroup.get('title')?.value !== '' &&
+      this.formGroup.get('duration')?.value !== '') {
+
+      console.log(this.formGroup.get('duration')?.value);
+      console.log(this.formGroup.get('duration')?.value == '');
+      let movie: Movie = new Movie(this.formGroup.get('title')?.value,
+        +this.formGroup.get('duration')?.value
+      );
+      this.apiService.addMovie(movie).subscribe();
+      this.formGroup.reset();
+      this.movieListBack.emit(movie);
+      this.status = -1;
+      this.snackBar.open('Dodano film!', '', {duration: 3000});
+      this.router.navigate(['/movies']);
+    }
   }
 
   showForm() {

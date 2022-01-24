@@ -4,7 +4,7 @@
     <mat-form-field appearance="outline" class="center">
       <mat-label>Nazwa</mat-label>
       <input matInput formControlName="title"  required/>
-      <mat-error *ngIf="title.invalid">Podaj nazwę o min długości 2</mat-error>
+      <mat-error *ngIf="title.invalid">Podaj nazwę filmu!</mat-error>
     </mat-form-field>
 
     <br>
@@ -12,7 +12,7 @@
     <mat-form-field appearance="outline" class="center">
       <mat-label>Czas trwania filmu</mat-label>
       <input matInput formControlName="duration" type="number" required />
-      <mat-error *ngIf="duration.invalid">Podaj czas trwania</mat-error>
+      <mat-error *ngIf="duration.invalid">Podaj czas trwania!</mat-error>
     </mat-form-field>
 
     <div class="center" style="padding-top: 2%;">
